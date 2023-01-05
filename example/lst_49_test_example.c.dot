@@ -1,0 +1,38 @@
+digraph g {
+	bgcolor = "black";
+	node [color = "yellow", fontcolor = "indigo", style = "filled", shape = "record"];
+	fontcolor = "white";
+	label = "lst from 49:test:example.c\nCapacity = 7\nSize = 4\nElement size = 4\nFirst free = 4\nHead = 1\nTail = 3\nNormalized\nData pointer = 0x55b6c24ab770\nNext elements pointer = 0x55b6c24ab7a0\nPrevious elements pointer = 0x55b6c24ab7e0";
+
+	L0 [label = "<LP0> 3 | {0 | ---} | <LN0> 1"];
+	L1 [color = "green",label = "<LP1> 0 | {1 | 1} | <LN1> 2"];
+	L2 [color = "green",label = "<LP2> 1 | {2 | 3} | <LN2> 3"];
+	L3 [color = "green",label = "<LP3> 2 | {3 | 4} | <LN3> 0"];
+	L4 [color = "orange",label = "<LP4> 4 | {4 | ---} | <LN4> 5"];
+	L5 [color = "orange",label = "<LP5> 5 | {5 | ---} | <LN5> 6"];
+	L6 [color = "orange",label = "<LP6> 6 | {6 | ---} | <LN6> 0"];
+	L7 [label = "Non-existent element", color = "red"];
+
+	node [color = "black",fontcolor = "black"];
+	LH0 -> LH1 -> LH2 -> LH3 -> LH4 -> LH5 -> LH6 -> LH7 [weight = 100];
+
+	{rank = same; LH0; L0}
+	{rank = same; LH1; L1}
+	{rank = same; LH2; L2}
+	{rank = same; LH3; L3}
+	{rank = same; LH4; L4}
+	{rank = same; LH5; L5}
+	{rank = same; LH6; L6}
+	{rank = same; LH7; L7}
+	L0:<LN0> -> L1:<LN1> [color = "blue"];
+	L0:<LP0> -> L3:<LP3> [color = "pink"];
+	L1:<LN1> -> L2:<LN2> [color = "blue"];
+	L1:<LP1> -> L0:<LP0> [color = "pink"];
+	L2:<LN2> -> L3:<LN3> [color = "blue"];
+	L2:<LP2> -> L1:<LP1> [color = "pink"];
+	L3:<LN3> -> L0:<LN0> [color = "blue"];
+	L3:<LP3> -> L2:<LP2> [color = "pink"];
+	L4:<LN4> -> L5:<LN5> [color = "white", style = "dotted"];
+	L5:<LN5> -> L6:<LN6> [color = "white", style = "dotted"];
+	L6:<LN6> -> L0:<LN0> [color = "white", style = "dotted"];
+}
