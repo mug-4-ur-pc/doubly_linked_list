@@ -86,7 +86,7 @@ list_error_t;
  * @note Don't forget to free memory using list_destroy() function.
  */
 #define list_create(START_CAPACITY_, PRINT_FUNC_, TYPE_) list_create_func_    \
-	(START_CAPACITY_, PRINT_FUNC_, sizeof (TYPE_))
+	((START_CAPACITY_), (PRINT_FUNC_), sizeof (TYPE_))
 
 /*!
  * @brief Create new list.
@@ -206,7 +206,7 @@ list_iterator_t list_prev
  *
  * This function checks correctness of the state of the list.
  */
-#define list_verify(LST_) list_verify_func_(LST_, #LST_,                      \
+#define list_verify(LST_) list_verify_func_((LST_), #LST_,                    \
                                             __LINE__, __func__, __FILE__)
 /*!
  * @brief Verify list.
@@ -363,7 +363,7 @@ void list_print
 * and create .png file from it using GraphVis.
 */
 #define list_dump(LST_) \
-	list_dump_func_(LST_, #LST_, __LINE__, __func__, __FILE__)
+	list_dump_func_((LST_), #LST_, __LINE__, __func__, __FILE__)
 
 /*!
  * @brief Dump list to file "<list_name_line_func_file>.dot"
